@@ -5,7 +5,7 @@ iterMax = 100
 iterNum = 0
 
 gsize = 32
-numNOnes = 1
+numNOnes = 100
 
 k = 1
 startT = .5;endT = 5;stepT = .5;
@@ -16,10 +16,13 @@ arrT = np.linspace(startT,endT,numT)
 
 statMat = np.random.randint(2,size=[gsize,gsize])*2-1
 
-arrOnes = np.ones(gsize**2 - numNOnes)
+arrOnes = np.array(np.ones((gsize**2 - numNOnes))).flatten()
 arrNOnes = np.ones(numNOnes)*-1
+arrindex = np.hstack((arrOnes,arrNOnes))
 
-statMat = np.reshape(np.hstack((arrOnes,arrNOnes)),[gsize,gsize])
+#Reshaping statMat
+statMat = np.random.permutation(arrindex)
+statMat = np.reshape(statMat,[gsize,gsize])
 
 print(np.size(statMat))
 statMatflip = np.copy(statMat) 
