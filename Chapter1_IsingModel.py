@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 #   Set global variables and make Magnetization container
 #----------------------------------------------------------------------#
 SIZE = 150
-STEPS = 1000000
+STEPS = 10000
 fraction = .9
 statisticsFraction = .1
 Mag = []
@@ -92,3 +92,4 @@ for T in arrT:
     plt.pcolor(data); plt.axis("tight");
     plt.title('Monty-Carlo Ising Model');
     plt.draw()
+
