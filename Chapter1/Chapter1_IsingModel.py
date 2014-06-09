@@ -4,10 +4,11 @@ import matplotlib.pyplot as plt
 #----------------------------------------------------------------------#
 #   Set global variables and make Magnetization container
 #----------------------------------------------------------------------#
-SIZE = 150
-STEPS = 10000
-fraction = .9
+SIZE = 200
+STEPS = 2000000
+fraction = .5
 statisticsFraction = .1
+
 Mag = []
 MagT = []
 #----------------------------------------------------------------------#
@@ -34,13 +35,12 @@ def energy(system, N, M):
 #   Build the system
 #----------------------------------------------------------------------#
 def build_system():
-    system = np.random.random_integers(0,1,(SIZE,SIZE))
-    system[system==0] =- 1
-    
     arrOnes = np.ones(SIZE**2-np.floor(fraction*SIZE**2))
-    arrNOnes = np.ones(np.floor(fraction*SIZE**2))
+    print(arrOnes)
+    arrNOnes = -1*np.ones(np.floor(fraction*SIZE**2))
+    print(arrNOnes)
     tmpSys = np.copy(np.hstack((arrOnes,arrNOnes)))
-    
+    np.random.shuffle(tmpSys)
     system = np.reshape(tmpSys,[SIZE,SIZE])
     return system
 
@@ -80,7 +80,7 @@ def run(T):
 startT = .5;endT = 4;stepT = .25; #These values define the array we are going to investigate for temperatures
 numT = (endT-startT)/stepT+1 #Number of steps taken along temperatures
 arrT = np.linspace(startT,endT,numT) #The actual array of temperatures
-
+arrT = [2.7]
 plt.close("all")
 
 for T in arrT:
@@ -89,7 +89,7 @@ for T in arrT:
     MagT.append(meanMag)
     Mag = []
     #plt.plot(Mag);
-    plt.pcolor(data); plt.axis("tight");
+    plt.pcolor(data); plt.axis("tight");plt.colorbar();
     plt.title('Monty-Carlo Ising Model');
     plt.draw()
-
+    plt.show()
