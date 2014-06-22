@@ -6,9 +6,14 @@
 %4) Flip states of string with mutation rate, mu.
 
 clear all
-N = 500;
-numSites = 15;
+N = 300;
+numSites = 16;
 maxIterations = 10000;
+
+
+%N = 10;
+%numSites = 3;
+%maxIterations = 1;
 
 arrSites = cell([1,numSites]);
 
@@ -49,3 +54,11 @@ if 1
         end
     end
 end
+
+for I = 1:numSites
+    legendNames{I} = num2str(I)
+end
+
+%Plot species with mutations <= 4
+plot(stats(1:25:10000,numSites-4:numSites)), hold all
+legend(legendNames{numSites-4:numSites})

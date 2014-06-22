@@ -32,7 +32,8 @@ L = 100; %Grid size, 100 is a good default
 p = .59; %Initial Percentage, set p>.6 when using Case = 2
 Case = 1; %Select a value for 'Case', either Case = 1 or Case = 2
 Video = 0; %Do you want to make a video? Set Video = 0/1 ('off'/'on')
-plots = 0;
+plots = 1;
+
 %--------------------Dynamics For Percolation---------------------%
 if Video
     vidObj = VideoWriter('Percolation.avi');
@@ -84,7 +85,6 @@ nameTitle = strcat(['Percolation, p = ',num2str(p),', grid = ',num2str(L),' x ',
 title(nameTitle)
 shading flat;
 drawnow;
-
 
 
 if Video

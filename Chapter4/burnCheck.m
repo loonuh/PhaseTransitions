@@ -4,7 +4,7 @@ function [burnCont,forest] = burnCheck(forest)
 fire = [fireRow,fireCol];
 burnCont = 0;
 
-for treeFire = 1:size(fire,1)
+for treeFire = 1:length(fire)
     if forest(fire(treeFire,1)+1,fire(treeFire,2)) == 1
         forest(fire(treeFire,1)+1,fire(treeFire,2)) = 2;
         burnCont =1;
@@ -25,5 +25,6 @@ for treeFire = 1:size(fire,1)
         burnCont =1;
     end
 end
+
 end
 
